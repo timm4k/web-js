@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataProcessing</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>DataProcessing</h1>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="task1">Shopping List</button>
+        <button class="tab-btn" data-tab="task2">Receipt</button>
+        <button class="tab-btn" data-tab="task3">CSS Styles</button>
+        <button class="tab-btn" data-tab="task4">Classrooms</button>
+      </div>
+
+      <div id="task1" class="tab-content active">
+        <div class="card">
+          <div class="card-title">Shopping List</div>
+          <div class="stats-grid" id="shopping-stats"></div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field">
+              <label class="field-label">Product</label>
+              <input type="text" id="item-name" placeholder="e.g. Milk" />
+            </div>
+            <div class="field" style="width: 80px">
+              <label class="field-label">Qty</label>
+              <input type="number" id="item-quantity" value="1" min="1" />
+            </div>
+            <div class="field" style="width: 120px">
+              <label class="field-label">Category</label>
+              <input type="text" id="item-category" placeholder="e.g. Dairy" />
+            </div>
+            <div class="field" style="width: 100px">
+              <label class="field-label">Price</label>
+              <input
+                type="number"
+                id="item-price"
+                placeholder="0.00"
+                value="0"
+                min="0"
+                step="0.5"
+              />
+            </div>
+            <div class="field" style="width: 110px">
+              <label class="field-label">Priority</label>
+              <select id="item-priority">
+                <option value="low">Low</option>
+                <option value="normal" selected>Normal</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <button
+              class="btn primary"
+              id="btn-add-item"
+              style="margin-top: 18px"
+            >
+              Add
+            </button>
+          </div>
+          <div class="flex-row between" style="margin-bottom: 16px">
+            <div class="flex-row">
+              <button class="btn small" data-sort="name">Name</button>
+              <button class="btn small" data-sort="quantity">Qty</button>
+              <button class="btn small" data-sort="price">Price</button>
+              <button class="btn small" data-sort="priority">Priority</button>
+              <button class="btn small" data-sort="category">Category</button>
+              <span style="color: #5a4a7a; font-size: 12px; margin-left: 8px"
+                >↕ sort</span
+              >
+            </div>
+            <div class="flex-row">
+              <div style="width: 160px">
+                <select id="filter-category">
+                  <option value="all">All categories</option>
+                </select>
+              </div>
+              <div style="width: 140px">
+                <select id="filter-status">
+                  <option value="all">All items</option>
+                  <option value="unpurchased">Unpurchased only</option>
+                  <option value="purchased">Purchased only</option>
+                </select>
+              </div>
+              <div style="width: 160px">
+                <input type="text" id="search-item" placeholder="Search..." />
+              </div>
+            </div>
+          </div>
+          <div id="shopping-table-container"></div>
+        </div>
+      </div>
+
+      <div id="task2" class="tab-content">
+        <div class="card">
+          <div class="card-title">Receipt</div>
+          <div class="stats-grid" id="receipt-stats"></div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Product</label>
+              <input type="text" id="receipt-name" placeholder="e.g. Coffee" />
+            </div>
+            <div class="field" style="width: 80px">
+              <label class="field-label">Qty</label>
+              <input type="number" id="receipt-quantity" value="1" min="1" />
+            </div>
+            <div class="field" style="width: 100px">
+              <label class="field-label">Price</label>
+              <input
+                type="number"
+                id="receipt-price"
+                placeholder="0.00"
+                value="0"
+                min="0"
+                step="0.5"
+              />
+            </div>
+            <div class="field" style="width: 120px">
+              <label class="field-label">Category</label>
+              <input
+                type="text"
+                id="receipt-category"
+                placeholder="e.g. Bakery"
+              />
+            </div>
+            <div class="field" style="width: 100px">
+              <label class="field-label">Disc (UAH)</label>
+              <input
+                type="number"
+                id="receipt-discount"
+                placeholder="0"
+                value="0"
+                min="0"
+                step="0.5"
+              />
+            </div>
+            <button
+              class="btn primary"
+              id="btn-add-receipt"
+              style="margin-top: 18px"
+            >
+              Add
+            </button>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px; gap: 8px">
+            <div class="field" style="width: 140px">
+              <label class="field-label">Receipt name</label>
+              <input type="text" id="receipt-save-name" placeholder="e.g. Weekly" />
+            </div>
+            <button class="btn small" id="btn-receipt-save" style="margin-top: 18px">Save</button>
+            <button class="btn small" id="btn-receipt-new" style="margin-top: 18px">New</button>
+            <div class="field" style="width: 140px">
+              <label class="field-label">Saved receipts</label>
+              <select id="receipt-saves-select">
+                <option value="">— select —</option>
+              </select>
+            </div>
+            <button class="btn small" id="btn-receipt-load" style="margin-top: 18px">Load</button>
+            <button class="btn small danger" id="btn-receipt-delete-save" style="margin-top: 18px">Delete</button>
+          </div>
+          <div class="flex-row between" style="margin-bottom: 16px">
+            <div class="flex-row">
+              <button class="btn small" data-receipt-sort="name">Name</button>
+              <button class="btn small" data-receipt-sort="quantity">
+                Qty
+              </button>
+              <button class="btn small" data-receipt-sort="price">Price</button>
+              <button class="btn small" data-receipt-sort="total">Total</button>
+              <span style="color: #5a4a7a; font-size: 12px; margin-left: 8px"
+                >↕ sort</span
+              >
+            </div>
+          </div>
+          <div id="receipt-table-container"></div>
+          <div id="receipt-total-container"></div>
+        </div>
+      </div>
+
+      <div id="task3" class="tab-content">
+        <div class="card">
+          <div class="card-title">CSS Styles</div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="preset-btn active" data-preset="heading">
+              Heading
+            </button>
+            <button class="preset-btn" data-preset="alert">Alert</button>
+            <button class="preset-btn" data-preset="highlight">
+              Highlight
+            </button>
+            <button class="preset-btn" data-preset="code">Code</button>
+            <button class="preset-btn" data-preset="custom">Custom</button>
+          </div>
+          <div id="style-table-container" style="margin-bottom: 16px"></div>
+          <div class="flex-row" style="margin-bottom: 12px">
+            <div class="field" style="width: 140px">
+              <label class="field-label">Property</label>
+              <input type="text" id="new-style-name" placeholder="e.g. color" />
+            </div>
+            <div class="field" style="width: 160px">
+              <label class="field-label">Value</label>
+              <input
+                type="text"
+                id="new-style-value"
+                placeholder="e.g. #ff0000"
+              />
+            </div>
+            <button
+              class="btn small"
+              id="btn-add-style"
+              style="margin-top: 18px"
+            >
+              Add style
+            </button>
+            <button
+              class="btn small danger"
+              id="btn-clear-styles"
+              style="margin-top: 18px"
+            >
+              Clear
+            </button>
+          </div>
+          <div class="field" style="margin-bottom: 12px">
+            <label class="field-label">Text to format</label>
+            <input
+              type="text"
+              id="style-text-input"
+              value="DataProcessing - JavaScript arrays, objects and methods"
+            />
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="btn-apply-styles">
+              Apply styles
+            </button>
+            <button class="btn" id="btn-document-write">
+              document.write()
+            </button>
+          </div>
+          <div class="preview-box" id="style-preview">
+            <span id="preview-text"
+              >Click &laquo;Apply styles&raquo; to preview</span
+            >
+          </div>
+          <div class="generated-code" id="generated-html"></div>
+        </div>
+      </div>
+
+      <div id="task4" class="tab-content">
+        <div class="card">
+          <div class="card-title">Classrooms</div>
+          <div class="stats-grid" id="classroom-stats"></div>
+          <div class="flex-row between" style="margin-bottom: 16px">
+            <div class="flex-row">
+              <div style="width: 160px">
+                <select id="filter-department">
+                  <option value="all">All departments</option>
+                </select>
+              </div>
+              <div style="width: 140px">
+                <select id="filter-building">
+                  <option value="all">All buildings</option>
+                </select>
+              </div>
+              <div style="width: 130px">
+                <select id="filter-equipment">
+                  <option value="all">Any equipment</option>
+                  <option value="projector">Projector</option>
+                  <option value="computers">Computers</option>
+                  <option value="both">Projector &amp; PC</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex-row">
+              <button class="btn small" data-classroom-sort="seats">
+                ↕ Seats
+              </button>
+              <button class="btn small" data-classroom-sort="name">
+                ↕ Name
+              </button>
+              <button class="btn small" data-classroom-sort="department">
+                ↕ Dept
+              </button>
+              <button class="btn small" data-classroom-sort="building">
+                ↕ Building
+              </button>
+              <button class="btn small" data-classroom-sort="floor">
+                ↕ Floor
+              </button>
+            </div>
+          </div>
+          <div class="card-title" style="font-size: 15px">
+            Find classroom for group
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Group name</label>
+              <input type="text" id="group-name" value="Group CS-21" />
+            </div>
+            <div class="field" style="width: 100px">
+              <label class="field-label">Students</label>
+              <input
+                type="number"
+                id="group-students"
+                value="15"
+                min="1"
+                max="30"
+              />
+            </div>
+            <div class="field" style="width: 150px">
+              <label class="field-label">Department</label>
+              <select id="group-department">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Linguistics">Linguistics</option>
+                <option value="Biology">Biology</option>
+              </select>
+            </div>
+            <button
+              class="btn primary"
+              id="btn-find-group"
+              style="margin-top: 18px"
+            >
+              Find
+            </button>
+          </div>
+          <div id="group-result"></div>
+          <div id="classroom-list-container" style="margin-top: 16px"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/shopping-list.js"></script>
+    <script src="js/receipt.js"></script>
+    <script src="js/css-styles.js"></script>
+    <script src="js/classrooms.js"></script>
+  </body>
+</html>

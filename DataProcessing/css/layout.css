@@ -1,0 +1,111 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 300;
+    color: #b366ff;
+    text-shadow: 0 0 20px rgba(179, 102, 255, 0.5), 0 0 40px rgba(179, 102, 255, 0.2);
+    padding: 20px 0 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7a6a9a;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 20px;
+    background: rgba(179, 102, 255, 0.08);
+    border: 1px solid rgba(179, 102, 255, 0.2);
+    color: #a090c0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background: rgba(179, 102, 255, 0.15);
+    color: #d0c0f0;
+    border-color: rgba(179, 102, 255, 0.4);
+}
+
+.tab-btn.active {
+    background: rgba(179, 102, 255, 0.2);
+    color: #b366ff;
+    border-color: #b366ff;
+    box-shadow: 0 0 15px rgba(179, 102, 255, 0.2), inset 0 0 15px rgba(179, 102, 255, 0.05);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flex-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-row.end {
+    justify-content: flex-end;
+}
+
+.flex-row.between {
+    justify-content: space-between;
+}
+
+.flex-grow {
+    flex: 1;
+    min-width: 120px;
+}
+
+@media (max-width: 768px) {
+    .tab-btn {
+        min-width: 100px;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+
+    .flex-row {
+        gap: 8px;
+    }
+}
