@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UtilityToolkit</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="task1">String Stats</button>
+        <button class="tab-btn" data-tab="task2">Num → Words</button>
+        <button class="tab-btn" data-tab="task3">Case Swap</button>
+        <button class="tab-btn" data-tab="task4">CSS → Camel</button>
+        <button class="tab-btn" data-tab="task5">Abbreviation</button>
+        <button class="tab-btn" data-tab="task6">Join</button>
+        <button class="tab-btn" data-tab="task7">Calculator</button>
+        <button class="tab-btn" data-tab="task8">URL Parser</button>
+        <button class="tab-btn" data-tab="task9">Splitter</button>
+        <button class="tab-btn" data-tab="task10">Template</button>
+      </div>
+
+      <div id="task1" class="tab-content active">
+        <div class="card">
+          <div class="card-title">
+            String Statistics
+            <span class="badge">letters &middot; digits &middot; other</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Input string</label>
+              <textarea
+                id="t1-input"
+                rows="2"
+                placeholder="e.g. Hello, user"
+              ></textarea>
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t1-analyze">Analyze</button>
+            <button class="btn small" id="t1-random">Random test</button>
+          </div>
+          <div id="t1-stats" class="stats-grid"></div>
+          <div id="t1-frequency"></div>
+          <div id="t1-result" class="result-box">
+            <span class="value"
+              >Click &laquo;Analyze&raquo; to get statistics</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="task2" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Number to Words <span class="badge">1–999</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field" style="width: 120px">
+              <label class="field-label">Number</label>
+              <input
+                type="number"
+                id="t2-input"
+                placeholder="e.g. 31"
+                min="1"
+                max="999"
+              />
+            </div>
+            <button
+              class="btn primary"
+              id="t2-convert"
+              style="margin-top: 18px"
+            >
+              Convert
+            </button>
+            <button class="btn small" id="t2-random" style="margin-top: 18px">
+              Random
+            </button>
+          </div>
+          <div id="t2-result" class="result-box">
+            <span class="value"
+              >Enter a number and click &laquo;Convert&raquo;</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="task3" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Case Swap
+            <span class="badge">upper ↔ lower &middot; digits → _</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Input string</label>
+              <textarea id="t3-input" rows="2" placeholder="e.g. Hello user"></textarea>
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t3-convert">Convert</button>
+            <button class="btn" id="t3-to-kebab">To kebab-case</button>
+            <button class="btn" id="t3-to-snake">To snake_case</button>
+            <button class="btn" id="t3-to-camel">To camelCase</button>
+            <button class="btn small" id="t3-random">Random</button>
+          </div>
+          <div id="t3-result" class="result-box">
+            <span class="value">Click &laquo;Convert&raquo; to swap case</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="task4" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            CSS ↔ CamelCase <span class="badge">kebab-case ↔ camelCase</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">CSS property name</label>
+              <input
+                type="text"
+                id="t4-input"
+                placeholder="e.g. font-size"
+              />
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t4-to-camel">→ camelCase</button>
+            <button class="btn" id="t4-to-kebab">→ kebab-case</button>
+            <button class="btn small" id="t4-batch">Batch convert</button>
+            <button class="btn small" id="t4-random">Random</button>
+          </div>
+          <div id="t4-result" class="result-box">
+            <span class="value">Enter a CSS property and convert</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="task5" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Abbreviation <span class="badge">phrase → acronym</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Phrase</label>
+              <input
+                type="text"
+                id="t5-input"
+                placeholder="e.g. object oriented programming"
+              />
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t5-convert">Abbreviate</button>
+            <button class="btn small" id="t5-random">Random example</button>
+          </div>
+          <div id="t5-result" class="result-box">
+            <span class="value"
+              >Enter a phrase and click &laquo;Abbreviate&raquo;</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="task6" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            String Joiner
+            <span class="badge">merge &middot; sort &middot; dedupe</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Strings (one per line)</label>
+              <textarea
+                id="t6-input"
+                rows="4"
+                placeholder="Hello hai oiii hai&#10;Lemme show u how to move, lemme show u how to...&#10;I wanna see the whole workd put some stamps on my passposrttttt"
+              ></textarea>
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field" style="width: 160px">
+              <label class="field-label">Separator</label>
+              <input type="text" id="t6-separator" value=", " />
+            </div>
+            <div class="field" style="width: 220px">
+              <label class="field-label">Options</label>
+              <select id="t6-options" multiple style="height: 150px">
+                <option value="trim">Trim whitespace</option>
+                <option value="dedupe" selected>Deduplicate</option>
+                <option value="sort">Sort alphabetically</option>
+                <option value="reverse">Reverse order</option>
+                <option value="ignore-empty" selected>Ignore empty</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t6-join">Join</button>
+          </div>
+          <div id="t6-result" class="result-box">
+            <span class="value"
+              >Configure options and click &laquo;Join&raquo;</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="task7" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Calculator
+            <span class="badge"
+              >+ &middot; − &middot; × &middot; ÷ &middot; ^ &middot; %</span
+            >
+          </div>
+          <div class="flex-row" style="margin-bottom: 12px">
+            <div class="field flex-grow">
+              <label class="field-label">Expression</label>
+              <input
+                type="text"
+                id="t7-input"
+                placeholder="e.g. (2 + 3) * 4"
+              />
+            </div>
+          </div>
+          <div class="calc-result-line" id="t7-preview">&nbsp;</div>
+          <div class="expression-display" id="t7-display">&nbsp;</div>
+          <div class="calc-keypad">
+            <button class="calc-btn clear" data-calc="clear">C</button>
+            <button class="calc-btn" data-calc="(">(</button>
+            <button class="calc-btn" data-calc=")">)</button>
+            <button class="calc-btn op" data-calc="/">÷</button>
+
+            <button class="calc-btn" data-calc="7">7</button>
+            <button class="calc-btn" data-calc="8">8</button>
+            <button class="calc-btn" data-calc="9">9</button>
+            <button class="calc-btn op" data-calc="*">×</button>
+
+            <button class="calc-btn" data-calc="4">4</button>
+            <button class="calc-btn" data-calc="5">5</button>
+            <button class="calc-btn" data-calc="6">6</button>
+            <button class="calc-btn op" data-calc="-">−</button>
+
+            <button class="calc-btn" data-calc="1">1</button>
+            <button class="calc-btn" data-calc="2">2</button>
+            <button class="calc-btn" data-calc="3">3</button>
+            <button class="calc-btn op" data-calc="+">+</button>
+
+            <button class="calc-btn" data-calc="0">0</button>
+            <button class="calc-btn" data-calc=".">.</button>
+            <button class="calc-btn" data-calc="%">%</button>
+            <button class="calc-btn equals" data-calc="=">=</button>
+          </div>
+          <div id="t7-result" class="result-box" style="margin-top: 12px">
+            <span class="value">Use keypad or type an expression</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="task8" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            URL Parser
+            <span class="badge"
+              >protocol &middot; domain &middot; path &middot; query</span
+            >
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">URL</label>
+              <input
+                type="text"
+                id="t8-input"
+                placeholder="e.g. https://example.com/page?q=search"
+              />
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t8-parse">Parse</button>
+            <button class="btn small" id="t8-examples">Examples</button>
+          </div>
+          <div id="t8-result" class="result-box" style="margin-bottom: 12px">
+            <span class="value">Enter a URL and click &laquo;Parse&raquo;</span>
+          </div>
+          <div id="t8-details"></div>
+        </div>
+      </div>
+
+      <div id="task9" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Custom Splitter <span class="badge">split without split()</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">String to split</label>
+              <input
+                type="text"
+                id="t9-input"
+                placeholder="e.g. Hello hai oiii hai"
+              />
+            </div>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field" style="width: 140px">
+              <label class="field-label">Separator</label>
+              <input type="text" id="t9-separator" value=" " />
+            </div>
+            <div class="field" style="width: 100px">
+              <label class="field-label">Limit</label>
+              <input
+                type="number"
+                id="t9-limit"
+                value="0"
+                min="0"
+                placeholder="0 = no limit"
+              />
+            </div>
+            <button class="btn primary" id="t9-split" style="margin-top: 18px">
+              Split
+            </button>
+          </div>
+          <div id="t9-result" class="result-box" style="margin-bottom: 12px">
+            <span class="value">Configure and click &laquo;Split&raquo;</span>
+          </div>
+          <div id="t9-parts"></div>
+        </div>
+      </div>
+
+      <div id="task10" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Template Engine <span class="badge">%1 %2.%3.%4 → values</span>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <div class="field flex-grow">
+              <label class="field-label">Template</label>
+              <input
+                type="text"
+                id="t10-template"
+                placeholder="e.g. Hello %1, you are %2 years old"
+              />
+            </div>
+          </div>
+          <div class="field" style="margin-bottom: 16px">
+            <label class="field-label"
+              >Parameters (one per line, %1 is first line, %2 is second,
+              etc.)</label
+            >
+            <textarea
+              id="t10-params"
+              rows="4"
+              placeholder="Enter parameters, one per line..."
+            ></textarea>
+          </div>
+          <div class="flex-row" style="margin-bottom: 16px">
+            <button class="btn primary" id="t10-render">Render</button>
+            <button class="btn small" id="t10-example1">Example 1</button>
+            <button class="btn small" id="t10-example2">Example 2</button>
+            <button class="btn small" id="t10-example3">Example 3</button>
+            <button class="btn small" id="t10-example4">Example 4</button>
+          </div>
+          <div id="t10-result" class="result-box" style="margin-bottom: 12px">
+            <span class="value"
+              >Enter template and parameters, then click
+              &laquo;Render&raquo;</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/string-stats.js"></script>
+    <script src="js/number-to-words.js"></script>
+    <script src="js/case-swap.js"></script>
+    <script src="js/css-to-camel.js"></script>
+    <script src="js/abbreviation.js"></script>
+    <script src="js/string-join.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/url-parser.js"></script>
+    <script src="js/splitter.js"></script>
+    <script src="js/template.js"></script>
+  </body>
+</html>
