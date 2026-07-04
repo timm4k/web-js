@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpreadRestObject</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Spread &amp; Rest</h1>
+      <div class="subtitle">Object Spread, Rest Parameters, Destructuring</div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="task1">Spread</button>
+        <button class="tab-btn" data-tab="task2">Function</button>
+        <button class="tab-btn" data-tab="task3">Rest Parameters</button>
+        <button class="tab-btn" data-tab="task4">Abilities</button>
+        <button class="tab-btn" data-tab="bonus">Bonus</button>
+      </div>
+
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">
+          Source Data
+        </div>
+        <div id="source-data"></div>
+      </div>
+
+      <div id="task1" class="tab-content active">
+        <div class="card">
+          <div class="card-title">
+            Spread Operator
+            <span class="badge">{ ...a, ...b }</span>
+          </div>
+          <div class="description-text">
+            Create <strong>updatedLoki</strong> using the spread operator. Properties from
+            <strong>missionUpdate</strong> should overwrite matching properties from <strong>lokiProfile</strong>.
+            Original objects must not be mutated
+          </div>
+          <div id="task1-result"></div>
+        </div>
+      </div>
+
+      <div id="task2" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Reusable Function
+            <span class="badge">updateLokiProfile</span>
+          </div>
+          <div class="description-text">
+            Encapsulate the merge logic into a reusable function
+            <strong>updateLokiProfile(profile, update)</strong>
+          </div>
+          <div id="task2-result"></div>
+        </div>
+      </div>
+
+      <div id="task3" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Rest Parameters
+            <span class="badge">...fieldsToHide</span>
+          </div>
+          <div class="description-text">
+            Write <strong>hideSecrets(profile, ...fieldsToHide)</strong> that returns
+            a new object without the specified properties
+          </div>
+          <div id="task3-result"></div>
+        </div>
+      </div>
+
+      <div id="task4" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Array Spread
+            <span class="badge">destructure + spread</span>
+          </div>
+          <div class="description-text">
+            Write <strong>learnAbilities(profile, ...newAbilities)</strong>.
+            Destructure <strong>abilities</strong> from the profile and append new abilities using the spread operator
+          </div>
+          <div id="task4-result"></div>
+        </div>
+      </div>
+
+      <div id="bonus" class="tab-content">
+        <div class="card">
+          <div class="card-title">
+            Multiple Updates
+            <span class="badge">mergeMissionUpdates</span>
+          </div>
+          <div class="description-text">
+            Write <strong>mergeMissionUpdates(profile, ...updates)</strong> that
+            merges the base profile with multiple update objects
+          </div>
+          <div id="bonus-result"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>
