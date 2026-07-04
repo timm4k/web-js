@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP &amp; Inheritance</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>OOP &amp; Inheritance</h1>
+      <div class="subtitle">Classes, Inheritance, Method Overriding</div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="marker">Marker</button>
+        <button class="tab-btn" data-tab="extendeddate">ExtendedDate</button>
+        <button class="tab-btn" data-tab="emptable">Employee Table</button>
+        <button class="tab-btn" data-tab="styled">Styled Table</button>
+      </div>
+
+      <div id="marker" class="tab-content active"></div>
+      <div id="extendeddate" class="tab-content"></div>
+      <div id="emptable" class="tab-content"></div>
+      <div id="styled" class="tab-content"></div>
+    </div>
+
+    <script src="src/models/Marker.js"></script>
+    <script src="src/models/RefillableMarker.js"></script>
+    <script src="src/models/ExtendedDate.js"></script>
+    <script src="src/models/Employee.js"></script>
+    <script src="src/models/EmpTable.js"></script>
+    <script src="src/models/StyledEmpTable.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/tasks/marker.js"></script>
+    <script src="src/tasks/date.js"></script>
+    <script src="src/tasks/emptable.js"></script>
+    <script src="src/tasks/styled.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
