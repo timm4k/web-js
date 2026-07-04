@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructor Prototype</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Constructor &amp; Prototype</h1>
+      <div class="subtitle">Constructor Functions, Prototypes, Object.defineProperty</div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="circle">Circle</button>
+        <button class="tab-btn" data-tab="element">HTML Element</button>
+        <button class="tab-btn" data-tab="cssclass">CSS Class</button>
+        <button class="tab-btn" data-tab="htmlblock">HTML Block</button>
+      </div>
+
+      <div id="circle" class="tab-content active"></div>
+      <div id="element" class="tab-content"></div>
+      <div id="cssclass" class="tab-content"></div>
+      <div id="htmlblock" class="tab-content"></div>
+    </div>
+
+    <script src="src/models/Circle.js"></script>
+    <script src="src/models/HtmlElement.js"></script>
+    <script src="src/models/CssClass.js"></script>
+    <script src="src/models/HtmlBlock.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

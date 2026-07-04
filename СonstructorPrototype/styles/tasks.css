@@ -1,0 +1,76 @@
+code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13px;
+}
+
+.description {
+    color: #8a7aaa;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.property {
+    background: rgba(10, 10, 30, 0.6);
+    border: 1px solid rgba(179, 102, 255, 0.1);
+    padding: 10px 14px;
+}
+
+.prop-name {
+    color: #7a6a9a;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.prop-value {
+    color: #50ff96;
+    font-size: 14px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    word-break: break-all;
+}
+
+.result-box {
+    background: rgba(10, 10, 30, 0.6);
+    border: 1px solid rgba(179, 102, 255, 0.12);
+    padding: 16px 20px;
+    margin-top: 12px;
+    min-height: 48px;
+    word-break: break-all;
+    font-size: 14px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.result-box.success {
+    border-color: rgba(80, 255, 150, 0.2);
+    color: #50ff96;
+}
+
+.generated-code {
+    min-height: 60px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    color: #d0c0f0;
+    max-height: none;
+    overflow: visible;
+}
+
+.error {
+    color: #ff6060;
+    background: rgba(255, 96, 96, 0.1);
+    border: 1px solid rgba(255, 96, 96, 0.2);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin-top: 8px;
+}

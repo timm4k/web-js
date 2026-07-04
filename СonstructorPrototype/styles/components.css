@@ -1,0 +1,385 @@
+.card {
+    background: rgba(179, 102, 255, 0.04);
+    border: 1px solid rgba(179, 102, 255, 0.15);
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card:hover {
+    border-color: rgba(179, 102, 255, 0.3);
+}
+
+.card-title {
+    font-size: 18px;
+    color: #b366ff;
+    margin-bottom: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(179, 102, 255, 0.3);
+}
+
+.card-title .badge {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(179, 102, 255, 0.15);
+    padding: 2px 10px;
+    margin-left: 10px;
+    color: #b366ff;
+    border: 1px solid rgba(179, 102, 255, 0.2);
+    vertical-align: middle;
+    letter-spacing: 1px;
+}
+
+input,
+select {
+    background: rgba(10, 10, 30, 0.8);
+    border: 1px solid rgba(179, 102, 255, 0.25);
+    color: #d0c0f0;
+    padding: 10px 14px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    border-color: #b366ff;
+    box-shadow: 0 0 10px rgba(179, 102, 255, 0.2);
+}
+
+input::placeholder {
+    color: #5a4a7a;
+}
+
+select option {
+    background: #0a0a1a;
+    color: #d0c0f0;
+}
+
+.btn {
+    padding: 10px 22px;
+    border: 1px solid rgba(179, 102, 255, 0.3);
+    background: rgba(179, 102, 255, 0.1);
+    color: #b366ff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: rgba(179, 102, 255, 0.2);
+    border-color: #b366ff;
+    box-shadow: 0 0 12px rgba(179, 102, 255, 0.2);
+}
+
+.btn.primary {
+    background: rgba(179, 102, 255, 0.2);
+    border-color: #b366ff;
+}
+
+.btn.primary:hover {
+    background: rgba(179, 102, 255, 0.3);
+    box-shadow: 0 0 20px rgba(179, 102, 255, 0.3);
+}
+
+.btn.danger {
+    border-color: rgba(255, 80, 80, 0.3);
+    color: #ff6060;
+    background: rgba(255, 80, 80, 0.08);
+}
+
+.btn.danger:hover {
+    background: rgba(255, 80, 80, 0.15);
+    border-color: #ff6060;
+    box-shadow: 0 0 12px rgba(255, 80, 80, 0.2);
+}
+
+.btn.success {
+    border-color: rgba(80, 255, 150, 0.3);
+    color: #50ff96;
+    background: rgba(80, 255, 150, 0.08);
+}
+
+.btn.success:hover {
+    background: rgba(80, 255, 150, 0.15);
+    border-color: #50ff96;
+    box-shadow: 0 0 12px rgba(80, 255, 150, 0.2);
+}
+
+.btn.small {
+    padding: 6px 14px;
+    font-size: 11px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th,
+td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(179, 102, 255, 0.1);
+    font-size: 14px;
+}
+
+th {
+    color: #b366ff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: rgba(179, 102, 255, 0.06);
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+tr:hover td {
+    background: rgba(179, 102, 255, 0.04);
+}
+
+.purchased td {
+    opacity: 0.5;
+}
+
+.purchased td.name span {
+    text-decoration: line-through;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.status-badge.done {
+    background: rgba(80, 255, 150, 0.1);
+    color: #50ff96;
+    border: 1px solid rgba(80, 255, 150, 0.2);
+}
+
+.status-badge.pending {
+    background: rgba(255, 180, 50, 0.1);
+    color: #ffb432;
+    border: 1px solid rgba(255, 180, 50, 0.2);
+}
+
+.priority-high {
+    color: #ff6060;
+}
+
+.priority-normal {
+    color: #ffb432;
+}
+
+.priority-low {
+    color: #50ff96;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-item {
+    background: rgba(179, 102, 255, 0.06);
+    border: 1px solid rgba(179, 102, 255, 0.1);
+    padding: 14px 18px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    color: #b366ff;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(179, 102, 255, 0.3);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.receipt-total {
+    text-align: right;
+    padding: 16px 20px;
+    margin-top: 12px;
+    border-top: 2px solid rgba(179, 102, 255, 0.2);
+}
+
+.receipt-total .line {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.receipt-total .line.grand {
+    font-size: 20px;
+    color: #b366ff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(179, 102, 255, 0.3);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(179, 102, 255, 0.15);
+}
+
+.preview-box {
+    background: #0a0a1a;
+    border: 1px solid rgba(179, 102, 255, 0.15);
+    padding: 24px;
+    min-height: 80px;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+}
+
+.classroom-card {
+    background: rgba(179, 102, 255, 0.04);
+    border: 1px solid rgba(179, 102, 255, 0.12);
+    padding: 16px 20px;
+    transition: border-color 0.3s ease;
+}
+
+.classroom-card:hover {
+    border-color: rgba(179, 102, 255, 0.3);
+}
+
+.classroom-card .name {
+    font-size: 20px;
+    color: #b366ff;
+    font-weight: 400;
+}
+
+.classroom-card .detail {
+    font-size: 13px;
+    color: #8a7aaa;
+    margin-top: 4px;
+}
+
+.classroom-card .detail span {
+    color: #d0c0f0;
+}
+
+.classroom-card .equip {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    margin-top: 6px;
+    margin-right: 6px;
+    background: rgba(179, 102, 255, 0.08);
+    border: 1px solid rgba(179, 102, 255, 0.15);
+    color: #a090c0;
+}
+
+.classroom-card .equip.on {
+    color: #50ff96;
+    border-color: rgba(80, 255, 150, 0.2);
+    background: rgba(80, 255, 150, 0.06);
+}
+
+.preset-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(179, 102, 255, 0.2);
+    background: rgba(179, 102, 255, 0.06);
+    color: #a090c0;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preset-btn:hover {
+    background: rgba(179, 102, 255, 0.12);
+    border-color: rgba(179, 102, 255, 0.4);
+    color: #d0c0f0;
+}
+
+.preset-btn.active {
+    background: rgba(179, 102, 255, 0.15);
+    border-color: #b366ff;
+    color: #b366ff;
+    box-shadow: 0 0 8px rgba(179, 102, 255, 0.15);
+}
+
+.generated-code {
+    background: rgba(10, 10, 30, 0.6);
+    border: 1px solid rgba(179, 102, 255, 0.1);
+    padding: 12px 16px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 12px;
+    color: #8a7aaa;
+    word-break: break-all;
+    margin-top: 8px;
+    max-height: 100px;
+    overflow: auto;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #5a4a7a;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.group-match {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(80, 255, 150, 0.04);
+    border: 1px solid rgba(80, 255, 150, 0.12);
+    color: #50ff96;
+    font-size: 13px;
+}
+
+.group-match.not-found {
+    background: rgba(255, 80, 80, 0.04);
+    border-color: rgba(255, 80, 80, 0.12);
+    color: #ff6060;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 16px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}

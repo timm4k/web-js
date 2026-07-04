@@ -1,0 +1,78 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 300;
+    color: #b366ff;
+    text-shadow: 0 0 20px rgba(179, 102, 255, 0.5), 0 0 40px rgba(179, 102, 255, 0.2);
+    padding: 20px 0 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7a6a9a;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 10px 28px;
+    border: 1px solid rgba(179, 102, 255, 0.2);
+    background: rgba(179, 102, 255, 0.06);
+    color: #8a7aaa;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.tab-btn:hover {
+    background: rgba(179, 102, 255, 0.12);
+    border-color: rgba(179, 102, 255, 0.4);
+    color: #d0c0f0;
+}
+
+.tab-btn.active {
+    background: rgba(179, 102, 255, 0.15);
+    border-color: #b366ff;
+    color: #b366ff;
+    box-shadow: 0 0 8px rgba(179, 102, 255, 0.15);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
