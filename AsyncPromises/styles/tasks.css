@@ -1,0 +1,248 @@
+.purpose-block {
+    color: #8a7aaa;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    color: #b366ff;
+    background: rgba(179, 102, 255, 0.08);
+    padding: 2px 6px;
+}
+
+.task-section {
+    margin-top: 20px;
+}
+
+.section-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.toggle-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(179, 102, 255, 0.2);
+    background: rgba(179, 102, 255, 0.06);
+    color: #a090c0;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toggle-btn:hover {
+    background: rgba(179, 102, 255, 0.12);
+    border-color: rgba(179, 102, 255, 0.4);
+    color: #d0c0f0;
+}
+
+.toggle-btn.active {
+    background: rgba(179, 102, 255, 0.15);
+    border-color: #b366ff;
+    color: #b366ff;
+    box-shadow: 0 0 8px rgba(179, 102, 255, 0.15);
+}
+
+.step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.step {
+    padding: 8px 12px;
+    background: rgba(10, 10, 30, 0.4);
+    border: 1px solid rgba(179, 102, 255, 0.08);
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    color: #8a7aaa;
+    transition: all 0.3s ease;
+    animation: stepIn 0.2s ease;
+}
+
+@keyframes stepIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step.done {
+    border-color: rgba(80, 255, 150, 0.15);
+    color: #50ff96;
+}
+
+.step.active {
+    border-color: rgba(255, 180, 50, 0.3);
+    color: #ffb432;
+}
+
+.step.error {
+    border-color: rgba(255, 80, 80, 0.15);
+    color: #ff6060;
+}
+
+.step.info {
+    border-color: rgba(179, 102, 255, 0.2);
+    color: #b366ff;
+}
+
+.flow-arrow {
+    text-align: center;
+    color: #5a4a7a;
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+.error-block {
+    background: rgba(255, 80, 80, 0.06);
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    padding: 14px 18px;
+    margin-top: 12px;
+}
+
+.error-title {
+    color: #ff6060;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.error-message {
+    color: #ff8080;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.explanation {
+    color: #8a7aaa;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(179, 102, 255, 0.04);
+    border-left: 2px solid rgba(179, 102, 255, 0.3);
+}
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(179, 102, 255, 0.1);
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b366ff, #50ff96);
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.output-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.controls-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.controls-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.controls-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.controls-row input {
+    flex: 1;
+    min-width: 80px;
+}
+
+.section-arrow {
+    text-align: center;
+    font-size: 20px;
+    color: #5a4a7a;
+    padding: 12px 0;
+}
+
+.code-section-label {
+    font-size: 11px;
+    color: #7a6a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.timer-info {
+    color: #8a7aaa;
+    font-size: 13px;
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.timer-info code {
+    font-size: 12px;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.input-group input {
+    max-width: 120px;
+}
+
+.input-group .multiply-sign {
+    color: #7a6a9a;
+    font-size: 18px;
+}
+
+.input-group .flex-grow {
+    flex: 1;
+    min-width: 120px;
+    max-width: none;
+}
