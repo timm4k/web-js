@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Toolkit — Space Mission Control</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/tasks.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Space Mission Control (✿◡‿◡)</h1>
+        <div class="subtitle">
+          DOM Toolkit — Interactive Mission Preparation System
+        </div>
+
+        <div class="mission-progress" id="mission-progress">
+          <div class="progress-title">Mission Preparation Progress</div>
+          <div class="progress-steps" id="progress-steps">
+            <button class="progress-step" data-step="object-card">
+              <span class="step-check" id="step-check-object-card">⬜</span>
+              <span class="step-label">Planet Scan</span>
+            </button>
+            <button class="progress-step" data-step="mission-status">
+              <span class="step-check" id="step-check-mission-status">⬜</span>
+              <span class="step-label">Mission Status</span>
+            </button>
+            <button class="progress-step" data-step="bonus-generator">
+              <span class="step-check" id="step-check-bonus-generator">⬜</span>
+              <span class="step-label">Resources</span>
+            </button>
+            <button class="progress-step" data-step="energy-modules">
+              <span class="step-check" id="step-check-energy-modules">⬜</span>
+              <span class="step-label">Power Systems</span>
+            </button>
+            <button class="progress-step" data-step="communication-channels">
+              <span class="step-check" id="step-check-communication-channels"
+                >⬜</span
+              >
+              <span class="step-label">Communications</span>
+            </button>
+            <button class="progress-step" data-step="orbital-modules">
+              <span class="step-check" id="step-check-orbital-modules">⬜</span>
+              <span class="step-label">Station Grid</span>
+            </button>
+            <button class="progress-step" data-step="planet-rating">
+              <span class="step-check" id="step-check-planet-rating">⬜</span>
+              <span class="step-label">Planet Ratings</span>
+            </button>
+            <button class="progress-step" data-step="expedition-tags">
+              <span class="step-check" id="step-check-expedition-tags">⬜</span>
+              <span class="step-label">Mission Tags</span>
+            </button>
+            <button class="progress-step" data-step="system-monitor">
+              <span class="step-check" id="step-check-system-monitor">⬜</span>
+              <span class="step-label">Ship Systems</span>
+            </button>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="progress-fill"></div>
+          </div>
+          <div class="progress-percent" id="progress-percent">0%</div>
+        </div>
+
+        <div class="statistics-panel">
+          <div class="stat-card">
+            <div class="stat-value" id="stat-modules">0</div>
+            <div class="stat-label">Modules Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-warnings">0</div>
+            <div class="stat-label">Warnings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">9</div>
+            <div class="stat-label">Total Systems</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-ready">0%</div>
+            <div class="stat-label">Ready</div>
+          </div>
+        </div>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="object-card">
+          Planet Scanner
+        </button>
+        <button class="tab-btn" data-tab="mission-status">
+          Mission Status
+        </button>
+        <button class="tab-btn" data-tab="bonus-generator">Resources</button>
+        <button class="tab-btn" data-tab="energy-modules">Power Systems</button>
+        <button class="tab-btn" data-tab="communication-channels">
+          Communications
+        </button>
+        <button class="tab-btn" data-tab="orbital-modules">Station Grid</button>
+        <button class="tab-btn" data-tab="planet-rating">Planet Rating</button>
+        <button class="tab-btn" data-tab="expedition-tags">Mission Tags</button>
+        <button class="tab-btn" data-tab="system-monitor">Ship Systems</button>
+      </nav>
+
+      <main>
+        <section id="object-card" class="tab-content active">
+          <article class="card module-panel" data-module="object-card">
+            <div class="module-header">
+              <div class="card-title">Planet Scanner</div>
+              <div class="module-purpose">
+                Scans detected celestial objects and generates detailed
+                information cards based on their physical attributes (name,
+                type, distance)
+              </div>
+              <div class="module-instruction">
+                Press the button to initiate a scan of the detected celestial
+                object. The system will read its data attributes and display a
+                formatted report
+              </div>
+            </div>
+            <div class="celestial-card">
+              <div>
+                <a
+                  href="https://www.freeiconspng.com/img/25612"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    id="object-card-image"
+                    class="celestial-image"
+                    src="assets/earth.png"
+                    alt="Earth"
+                    data-type="planet"
+                    data-distance="149.6M km"
+                  />
+                </a>
+                <span class="object-caption" id="object-card-caption"></span>
+              </div>
+              <div id="object-card-info" class="celestial-info">
+                <div class="empty-state">Awaiting scan initiation</div>
+              </div>
+            </div>
+            <div class="scan-warning" id="scan-warning">
+              <b id="warning-text"
+                >⚠ Warning: Unknown object detected, hazardous to vessel</b
+              >
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="scan-planet-btn">
+                Scan Celestial Object
+              </button>
+            </div>
+            <div class="module-result" id="object-card-result"></div>
+          </article>
+        </section>
+
+        <section id="mission-status" class="tab-content">
+          <article class="card module-panel" data-module="mission-status">
+            <div class="module-header">
+              <div class="card-title">Mission Status</div>
+              <div class="module-purpose">
+                Verifies the current communication status of the mission and
+                synchronizes status across all ground stations
+              </div>
+              <div class="module-instruction">
+                Use the button below to establish or toggle the communication
+                link. The status display will update to reflect the current
+                connection state
+              </div>
+            </div>
+            <div
+              id="mission-status-display"
+              class="mission-status-display status-offline"
+            >
+              <span class="status-icon">🔴</span>
+              <span class="status-text">Communication Offline</span>
+              <span class="status-label">Current: Offline</span>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="toggle-status-btn">
+                Synchronize Mission Status
+              </button>
+            </div>
+            <div class="module-result" id="mission-status-result"></div>
+          </article>
+        </section>
+
+        <section id="bonus-generator" class="tab-content">
+          <article class="card module-panel" data-module="bonus-generator">
+            <div class="module-header">
+              <div class="card-title">Mission Resources</div>
+              <div class="module-purpose">
+                Calculates random resource bonuses for energy, fuel, and
+                research that will be available to the crew during the
+                expedition
+              </div>
+              <div class="module-instruction">
+                Generate a resource allocation report. Each press calculates new
+                random values. The highest bonus will be highlighted
+              </div>
+            </div>
+            <div class="bonus-grid">
+              <div id="bonus-energy" class="bonus-item">
+                <div class="bonus-icon">⚡</div>
+                <div class="bonus-label">Energy Bonus</div>
+                <div class="bonus-value">—</div>
+              </div>
+              <div id="bonus-fuel" class="bonus-item">
+                <div class="bonus-icon">⛽</div>
+                <div class="bonus-label">Fuel Bonus</div>
+                <div class="bonus-value">—</div>
+              </div>
+              <div id="bonus-research" class="bonus-item">
+                <div class="bonus-icon">🔬</div>
+                <div class="bonus-label">Research Bonus</div>
+                <div class="bonus-value">—</div>
+              </div>
+            </div>
+            <div id="bonus-summary"></div>
+            <div id="promo">Space resource discount:</div>
+            <div class="inventory-list" id="inventory-list">
+              <div class="inventory-item">
+                <span class="inventory-count">10</span> Fuel
+              </div>
+              <div class="inventory-item">
+                <span class="inventory-count">0</span> Oxygen
+              </div>
+              <div class="inventory-item">
+                <span class="inventory-count">5</span> Food
+              </div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="generate-bonus-btn">
+                Calculate Resources
+              </button>
+            </div>
+            <div class="module-result" id="bonus-generator-result"></div>
+          </article>
+        </section>
+
+        <section id="energy-modules" class="tab-content">
+          <article class="card module-panel" data-module="energy-modules">
+            <div class="module-header">
+              <div class="card-title">Power Systems</div>
+              <div class="module-purpose">
+                Checks the operational status of all energy modules aboard the
+                spacecraft. Each module's charge level determines its
+                operational state
+              </div>
+              <div class="module-instruction">
+                Run diagnostics on all power modules. The system will scan each
+                module sequentially and report its charge level and operational
+                status
+              </div>
+            </div>
+            <div id="energy-modules-list">
+              <div class="module-card" data-charge="85" data-type="Solar">
+                <div class="module-name">Solar Module</div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="module-status pending">Awaiting diagnostics</div>
+              </div>
+              <div class="module-card" data-charge="12" data-type="Nuclear">
+                <div class="module-name">Nuclear Module</div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="module-status pending">Awaiting diagnostics</div>
+              </div>
+              <div class="module-card" data-charge="55" data-type="Ion">
+                <div class="module-name">Ion Module</div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="module-status pending">Awaiting diagnostics</div>
+              </div>
+              <div class="module-card" data-charge="0" data-type="Plasma">
+                <div class="module-name">Plasma Module</div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="module-status pending">Awaiting diagnostics</div>
+              </div>
+              <div class="module-card" data-charge="93" data-type="Fusion">
+                <div class="module-name">Fusion Module</div>
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <div class="module-status pending">Awaiting diagnostics</div>
+              </div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="run-diagnostics-btn">
+                Run Power Diagnostics
+              </button>
+            </div>
+            <div class="module-result" id="energy-modules-result"></div>
+          </article>
+        </section>
+
+        <section id="communication-channels" class="tab-content">
+          <article
+            class="card module-panel"
+            data-module="communication-channels"
+          >
+            <div class="module-header">
+              <div class="card-title">Communication Center</div>
+              <div class="module-purpose">
+                Analyzes all available communication channels and determines
+                their protocol type and security status
+              </div>
+              <div class="module-instruction">
+                Initiate channel analysis. The system will classify each channel
+                by protocol (HTTPS, FTP, mailto, HTTP) and display its type and
+                security level
+              </div>
+            </div>
+            <div id="communication-channels-list" class="channels-list">
+              <a data-channel-url="https://mission-control.space" href="#"
+                >Mission Control</a
+              >
+              <a data-channel-url="mailto:captain@station.space" href="#"
+                >Captain</a
+              >
+              <a data-channel-url="ftp://archive.space" href="#">Archive</a>
+              <a data-channel-url="https://telemetry.space" href="#"
+                >Telemetry</a
+              >
+              <a data-channel-url="http://weather.space" href="#"
+                >Weather Feed</a
+              >
+              <a data-channel-url="mailto:engineer@station.space" href="#"
+                >Engineer</a
+              >
+              <a data-channel-url="ftp://logs.space" href="#">Logs Server</a>
+              <a data-channel-url="https://navigation.space" href="#"
+                >Navigation</a
+              >
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="analyze-channels-btn">
+                Analyze Communication Channels
+              </button>
+            </div>
+            <div class="module-result" id="communication-channels-result"></div>
+          </article>
+        </section>
+
+        <section id="orbital-modules" class="tab-content">
+          <article class="card module-panel" data-module="orbital-modules">
+            <div class="module-header">
+              <div class="card-title">Orbital Station Grid</div>
+              <div class="module-purpose">
+                Maps and activates all modules of the orbital station, assigning
+                sequential numbers and identifying key modules
+              </div>
+              <div class="module-instruction">
+                Activate the station grid to map all orbital modules. The system
+                will number each module, highlight the command and emergency
+                modules, and flag special units
+              </div>
+            </div>
+            <ul id="orbital-modules-list" class="orbital-list">
+              <li>Command Bridge</li>
+              <li>Life Support Hub</li>
+              <li>Science Laboratory</li>
+              <li>Engineering Bay</li>
+              <li>Crew Quarters Alpha</li>
+              <li>Medical Center</li>
+              <li>Cargo Hold</li>
+              <li>Observation Deck</li>
+              <li>Communications Array</li>
+              <li>Emergency Shelter</li>
+            </ul>
+            <div class="module-actions">
+              <button class="btn primary" id="display-modules-btn">
+                Activate Station Grid
+              </button>
+            </div>
+            <div class="module-result" id="orbital-modules-result"></div>
+          </article>
+        </section>
+
+        <section id="planet-rating" class="tab-content">
+          <article class="card module-panel" data-module="planet-rating">
+            <div class="module-header">
+              <div class="card-title">Planet Habitability Rating</div>
+              <div class="module-purpose">
+                Evaluates discovered exoplanets for habitability and assigns a
+                star-based rating to guide exploration priorities
+              </div>
+              <div class="module-instruction">
+                Calculate ratings for all discovered planets. The system will
+                assign stars (1 to 5) and flag top-rated planets as recommended
+                for exploration
+              </div>
+            </div>
+            <div id="planets-container" class="grid-3">
+              <div
+                class="planet-card"
+                data-rating="5"
+                data-name="Proxima b"
+                data-type="Terrestrial"
+              >
+                <div class="planet-name">Proxima b</div>
+                <div class="planet-type">Terrestrial</div>
+                <div class="planet-stars"></div>
+              </div>
+              <div
+                class="planet-card"
+                data-rating="3"
+                data-name="Kepler-442b"
+                data-type="Super-Earth"
+              >
+                <div class="planet-name">Kepler-442b</div>
+                <div class="planet-type">Super-Earth</div>
+                <div class="planet-stars"></div>
+              </div>
+              <div
+                class="planet-card"
+                data-rating="4"
+                data-name="TRAPPIST-1e"
+                data-type="Rocky"
+              >
+                <div class="planet-name">TRAPPIST-1e</div>
+                <div class="planet-type">Rocky</div>
+                <div class="planet-stars"></div>
+              </div>
+              <div
+                class="planet-card"
+                data-rating="2"
+                data-name="HD 219134 b"
+                data-type="Super-Earth"
+              >
+                <div class="planet-name">HD 219134 b</div>
+                <div class="planet-type">Super-Earth</div>
+                <div class="planet-stars"></div>
+              </div>
+              <div
+                class="planet-card"
+                data-rating="5"
+                data-name="Ross 128 b"
+                data-type="Terrestrial"
+              >
+                <div class="planet-name">Ross 128 b</div>
+                <div class="planet-type">Terrestrial</div>
+                <div class="planet-stars"></div>
+              </div>
+              <div
+                class="planet-card"
+                data-rating="1"
+                data-name="55 Cancri e"
+                data-type="Lava World"
+              >
+                <div class="planet-name">55 Cancri e</div>
+                <div class="planet-type">Lava World</div>
+                <div class="planet-stars"></div>
+              </div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="calculate-rating-btn">
+                Calculate Planet Ratings
+              </button>
+            </div>
+            <div class="module-result" id="planet-rating-result"></div>
+          </article>
+        </section>
+
+        <section id="expedition-tags" class="tab-content">
+          <article class="card module-panel" data-module="expedition-tags">
+            <div class="module-header">
+              <div class="card-title">Expedition Tags</div>
+              <div class="module-purpose">
+                Generates categorized tags for the expedition to enable sorting,
+                filtering, and analysis of mission tasks
+              </div>
+              <div class="module-instruction">
+                Generate mission tags. The system will create interactive badges
+                for each expedition category with appropriate icons
+              </div>
+            </div>
+            <div
+              id="expedition-tags-container"
+              data-tags="EVA,Science,Medicine,Repair,Survey,Training,Emergency,Research,Navigation,Communication,Mining,Photography"
+            >
+              <div class="empty-state">Tags not yet generated</div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="generate-tags-btn">
+                Generate Mission Tags
+              </button>
+            </div>
+            <div class="module-result" id="expedition-tags-result"></div>
+          </article>
+        </section>
+
+        <section id="system-monitor" class="tab-content">
+          <article class="card module-panel" data-module="system-monitor">
+            <div class="module-header">
+              <div class="card-title">Ship Systems Monitor</div>
+              <div class="module-purpose">
+                Checks the operational health of all core spacecraft systems and
+                displays their current status via progress indicators
+              </div>
+              <div class="module-instruction">
+                Run a full systems check. Each system's health will be evaluated
+                and displayed as a progress bar with a color-coded status
+                indicator
+              </div>
+            </div>
+            <div id="system-monitor-container">
+              <div class="system-row" data-name="Navigation" data-percent="92">
+                <div class="system-name">Navigation</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+              <div
+                class="system-row"
+                data-name="Communication"
+                data-percent="78"
+              >
+                <div class="system-name">Communication</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+              <div class="system-row" data-name="Life Support" data-percent="95">
+                <div class="system-name">Life Support</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+              <div class="system-row" data-name="Engines" data-percent="64">
+                <div class="system-name">Engines</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+              <div class="system-row" data-name="Shields" data-percent="41">
+                <div class="system-name">Shields</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+              <div class="system-row" data-name="Radar" data-percent="18">
+                <div class="system-name">Radar</div>
+                <div class="system-bar-container">
+                  <div class="system-bar">
+                    <div class="bar" style="width: 0%"></div>
+                  </div>
+                  <div class="system-percent">—</div>
+                  <div class="system-status-text">—</div>
+                </div>
+              </div>
+            </div>
+            <div class="module-actions">
+              <button class="btn primary" id="check-systems-btn">
+                Check Ship Systems
+              </button>
+            </div>
+            <div class="module-result" id="system-monitor-result"></div>
+          </article>
+        </section>
+      </main>
+
+      <div class="mission-log" id="mission-log">
+        <div class="log-title">Mission Log</div>
+        <ul id="mission-log-list"></ul>
+      </div>
+
+      <div class="mission-ready-banner" id="mission-ready-banner">
+        <div class="ready-icon">🚀</div>
+        <div class="ready-title">Mission Ready</div>
+        <div class="ready-text">
+          All systems have been successfully initialized.<br />
+          Spacecraft <strong>"Horizon"</strong> is fully prepared for launch
+          (´▽`ʃ♡ƪ)
+        </div>
+      </div>
+    </div>
+
+    <script src="js/core/constants/statuses.js"></script>
+    <script src="js/core/constants/bonuses.js"></script>
+    <script src="js/core/constants/channels.js"></script>
+    <script src="js/core/constants/tags.js"></script>
+    <script src="js/core/constants/planets.js"></script>
+    <script src="js/core/constants/systems.js"></script>
+    <script src="js/core/helpers/dom.js"></script>
+    <script src="js/core/helpers/math.js"></script>
+    <script src="js/core/helpers/progress.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tasks/object-card.js"></script>
+    <script src="js/tasks/mission-status.js"></script>
+    <script src="js/tasks/bonus-generator.js"></script>
+    <script src="js/tasks/energy-modules.js"></script>
+    <script src="js/tasks/communication-channels.js"></script>
+    <script src="js/tasks/orbital-modules.js"></script>
+    <script src="js/tasks/planet-rating.js"></script>
+    <script src="js/tasks/expedition-tags.js"></script>
+    <script src="js/tasks/system-monitor.js"></script>
+  </body>
+</html>
