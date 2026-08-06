@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Browser Events — Loki's Archive</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/components.css">
+        <link rel="stylesheet" href="css/utilities.css">
+    </head>
+    <body>
+        <div class="app-container">
+            <header class="app-header">
+                <div class="app-header__logo">
+                    <span class="app-header__logo-icon" aria-hidden="true">ᛚ</span>
+                    <div>
+                        <div class="app-header__title">
+                            Browser Events
+                        </div>
+                        <div class="app-header__subtitle">
+                            Loki's Ancient Archive
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__progress">
+                    <div class="progress-bar" role="progressbar" aria-label="Completed missions" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0">
+                        <div class="progress-bar__fill">
+                        </div>
+                    </div>
+                    <span class="progress-label">0 / 18 missions</span>
+                </div>
+            </header>
+            <main class="app-main">
+                <section class="mission-banner animate-fade-in-up" aria-labelledby="mission-title">
+                    <div class="mission-banner__icon" aria-hidden="true">
+                        ᛟ
+                    </div>
+                    <div class="mission-banner__content">
+                        <h1 class="mission-banner__title" id="mission-title">The Archive of the Trickster</h1>
+                        <p class="mission-banner__description">Eighteen browser-event trials lie across illusion, motion and destiny. Their technical laws remain unchanged</p>
+                    </div>
+                </section>
+                <nav class="tabs-nav" role="tablist" aria-label="Trial groups">
+                    <button class="tab-btn active" id="tab-illusions" type="button" role="tab" aria-selected="true" aria-controls="illusions" data-tab="illusions">Illusions</button>
+                    <button class="tab-btn" id="tab-trials" type="button" role="tab" aria-selected="false" aria-controls="trials" data-tab="trials">Trials</button>
+                    <button class="tab-btn" id="tab-destiny" type="button" role="tab" aria-selected="false" aria-controls="destiny" data-tab="destiny">Destiny</button>
+                    <button class="tab-btn" id="tab-interface" type="button" role="tab" aria-selected="false" aria-controls="interface" data-tab="interface">Runic Interface</button>
+                    <button class="tab-btn" id="tab-motion" type="button" role="tab" aria-selected="false" aria-controls="motion" data-tab="motion">Arcane Motion</button>
+                    <button class="tab-btn" id="tab-craft" type="button" role="tab" aria-selected="false" aria-controls="craft" data-tab="craft">Timeline Craft</button>
+                </nav>
+                <section class="tab-panel active" id="illusions" role="tabpanel" aria-labelledby="tab-illusions">
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="forbidden-relic">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">contextmenu / preventDefault</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">📿 Illusion I</h2>
+                            <h3 class="mission-card__subtitle">Forbidden Relic</h3>
+                            <p class="mission-card__briefing">An ancient relic is protected by Loki's illusion</p>
+                            <p class="mission-card__objective">How to complete: choose Activate Relic, then right-click the relic image. The normal context menu is cancelled and a warning appears. You may try again freely</p>
+                            <div class="mission-card__visual" id="forbidden-relic-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="forbidden-relic" data-action="activate">Activate Relic</button> <button class="btn btn--secondary" type="button" data-task="forbidden-relic" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="forbidden-relic-result" aria-live="polite"></div>
+                            <div class="event-log" id="forbidden-relic-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="bifrost-portal">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">click / confirm</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">🌈 Illusion II</h2>
+                            <h3 class="mission-card__subtitle">Bifrost Portal</h3>
+                            <p class="mission-card__briefing">The Bifrost demands consent before passage</p>
+                            <p class="mission-card__objective">How to complete: choose Open Portal, click Portal to Asgard, then answer the confirmation. OK opens marvel.com; Cancel keeps you in the Archive</p>
+                            <div class="mission-card__visual" id="bifrost-portal-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="bifrost-portal" data-action="activate">Open Portal</button> <button class="btn btn--secondary" type="button" data-task="bifrost-portal" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="bifrost-portal-result" aria-live="polite"></div>
+                            <div class="event-log" id="bifrost-portal-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="mischievous-artifact">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">mouseenter / coordinates</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">🔮 Illusion III</h2>
+                            <h3 class="mission-card__subtitle">Mischievous Artifact</h3>
+                            <p class="mission-card__briefing">A trickster artifact escapes the cursor</p>
+                            <p class="mission-card__objective">How to complete: choose Summon Artifact and move the pointer onto it. Every mouseenter sends it to new random top and left coordinates</p>
+                            <div class="mission-card__visual" id="mischievous-artifact-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="mischievous-artifact" data-action="activate">Summon Artifact</button> <button class="btn btn--secondary" type="button" data-task="mischievous-artifact" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="mischievous-artifact-result" aria-live="polite"></div>
+                            <div class="event-log" id="mischievous-artifact-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+                <section class="tab-panel" id="trials" role="tabpanel" aria-labelledby="tab-trials" hidden>
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="council-of-realms">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">delegation / closest()</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">👑 Trial I</h2>
+                            <h3 class="mission-card__subtitle">Council of Realms</h3>
+                            <p class="mission-card__briefing">Council records may be dismissed from one table</p>
+                            <p class="mission-card__objective">How to complete: choose Convene Council, then press Dismiss on any row. One table listener removes that row. Continue dismissing other members without Reset</p>
+                            <div class="mission-card__visual" id="council-of-realms-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="council-of-realms" data-action="activate">Convene Council</button> <button class="btn btn--secondary" type="button" data-task="council-of-realms" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="council-of-realms-result" aria-live="polite"></div>
+                            <div class="event-log" id="council-of-realms-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="archive-of-illusions">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">delegation / computed style</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">📖 Trial II</h2>
+                            <h3 class="mission-card__subtitle">Archive of Illusions</h3>
+                            <p class="mission-card__briefing">Fifty magical runes alter the page aura</p>
+                            <p class="mission-card__objective">How to complete: choose Open Archive and click any rune. The page adopts its computed color. Select other runes as many times as you wish</p>
+                            <div class="mission-card__visual" id="archive-of-illusions-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="archive-of-illusions" data-action="activate">Open Archive</button> <button class="btn btn--secondary" type="button" data-task="archive-of-illusions" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="archive-of-illusions-result" aria-live="polite"></div>
+                            <div class="event-log" id="archive-of-illusions-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="hall-of-echoes">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">bubbling / stopPropagation</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">🔔 Trial III</h2>
+                            <h3 class="mission-card__subtitle">Hall of Echoes</h3>
+                            <p class="mission-card__briefing">An echo crosses three nested chambers</p>
+                            <p class="mission-card__objective">How to complete: choose Enter Hall. Click Hidden Core once to log Hidden Core → Rune Chamber → Outer Hall. Click it again to stop propagation inside Hidden Core</p>
+                            <div class="mission-card__visual" id="hall-of-echoes-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="hall-of-echoes" data-action="activate">Enter Hall</button> <button class="btn btn--secondary" type="button" data-task="hall-of-echoes" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="hall-of-echoes-result" aria-live="polite"></div>
+                            <div class="event-log" id="hall-of-echoes-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+                <section class="tab-panel" id="destiny" role="tabpanel" aria-labelledby="tab-destiny" hidden>
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="sacred-relic">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">CustomEvent / detail</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">⚔️ Destiny I</h2>
+                            <h3 class="mission-card__subtitle">The Sacred Relic</h3>
+                            <p class="mission-card__briefing">A relic shelf speaks to an independent Ancient Vault</p>
+                            <p class="mission-card__objective">How to complete: choose Reveal Relic, then press Claim Relic. Every click dispatches artifact-claimed and the independent Ancient Vault updates its count and power</p>
+                            <div class="mission-card__visual" id="sacred-relic-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="sacred-relic" data-action="activate">Reveal Relic</button> <button class="btn btn--secondary" type="button" data-task="sacred-relic" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="sacred-relic-result" aria-live="polite"></div>
+                            <div class="event-log" id="sacred-relic-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="secret-rune-sequence">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">keydown / buffer</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">🔐 Destiny II</h2>
+                            <h3 class="mission-card__subtitle">Secret Rune Sequence</h3>
+                            <p class="mission-card__briefing">A hidden identity waits behind four letters</p>
+                            <p class="mission-card__objective">How to complete: choose Begin Incantation and press L, O, K, I once each. Held-key repeats are ignored, so one physical press always fills one rune slot</p>
+                            <div class="mission-card__visual" id="secret-rune-sequence-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="secret-rune-sequence" data-action="activate">Begin Incantation</button> <button class="btn btn--secondary" type="button" data-task="secret-rune-sequence" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="secret-rune-sequence-result" aria-live="polite"></div>
+                            <div class="event-log" id="secret-rune-sequence-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="temporal-echo">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">click / Date.now()</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">⏳ Destiny III</h2>
+                            <h3 class="mission-card__subtitle">Temporal Echo</h3>
+                            <p class="mission-card__briefing">Two rapid touches awaken a dormant relic</p>
+                            <p class="mission-card__objective">How to complete: choose Reveal Echo and click the relic twice within 500 ms. Each valid pair awakens it; repeat the pair whenever you wish</p>
+                            <div class="mission-card__visual" id="temporal-echo-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="temporal-echo" data-action="activate">Reveal Echo</button> <button class="btn btn--secondary" type="button" data-task="temporal-echo" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="temporal-echo-result" aria-live="polite"></div>
+                            <div class="event-log" id="temporal-echo-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+                <section class="tab-panel" id="interface" role="tabpanel" aria-labelledby="tab-interface" hidden>
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="emerald-familiar">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">mousemove / clientX,Y</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">🟢 Interface I</h2>
+                            <h3 class="mission-card__subtitle">Emerald Familiar</h3>
+                            <p class="mission-card__briefing">A small familiar follows motion through the chamber</p>
+                            <p class="mission-card__objective">How to complete: choose Summon Familiar and move the cursor across the chamber. The orb follows clientX and clientY with a small smooth delay</p>
+                            <div class="mission-card__visual" id="emerald-familiar-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="emerald-familiar" data-action="activate">Summon Familiar</button> <button class="btn btn--secondary" type="button" data-task="emerald-familiar" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="emerald-familiar-result" aria-live="polite"></div>
+                            <div class="event-log" id="emerald-familiar-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="pure-rune-script">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">keydown / event.key</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">✒️ Interface II</h2>
+                            <h3 class="mission-card__subtitle">Pure Rune Script</h3>
+                            <p class="mission-card__briefing">The Sacred Scroll accepts letters alone</p>
+                            <p class="mission-card__objective">How to complete: choose Open Scroll, type a few letters, then deliberately press a digit such as 7 or a symbol such as @. The forbidden key must not appear and the field turns red for one second</p>
+                            <div class="mission-card__visual" id="pure-rune-script-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="pure-rune-script" data-action="activate">Open Scroll</button> <button class="btn btn--secondary" type="button" data-task="pure-rune-script" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="pure-rune-script-result" aria-live="polite"></div>
+                            <div class="event-log" id="pure-rune-script-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="timeline-ascent">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">scroll / scrollTo</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">⬆️ Interface III</h2>
+                            <h3 class="mission-card__subtitle">Timeline Ascent</h3>
+                            <p class="mission-card__briefing">A sigil returns the Archive to its beginning</p>
+                            <p class="mission-card__objective">How to complete: choose Bind Ascent Sigil, scroll farther than one viewport, then use the fixed gold button to return smoothly to the top</p>
+                            <div class="mission-card__visual" id="timeline-ascent-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="timeline-ascent" data-action="activate">Bind Ascent Sigil</button> <button class="btn btn--secondary" type="button" data-task="timeline-ascent" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="timeline-ascent-result" aria-live="polite"></div>
+                            <div class="event-log" id="timeline-ascent-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+                <section class="tab-panel" id="motion" role="tabpanel" aria-labelledby="tab-motion" hidden>
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="trickster-path">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">keydown / style.top,left</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">♟️ Motion I</h2>
+                            <h3 class="mission-card__subtitle">Trickster's Path</h3>
+                            <p class="mission-card__briefing">Loki's sigil moves within a sealed arena</p>
+                            <p class="mission-card__objective">How to complete: the rune ᛚ is the hero — you do not type it. Choose Open Arena and use the physical keyboard arrows ← ↑ ↓ →. To run, hold Shift while pressing an arrow</p>
+                            <div class="mission-card__visual" id="trickster-path-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="trickster-path" data-action="activate">Open Arena</button> <button class="btn btn--secondary" type="button" data-task="trickster-path" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="trickster-path-result" aria-live="polite"></div>
+                            <div class="event-log" id="trickster-path-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="enchantment-resonance">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">mousedown / mousemove / mouseup</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">🎚️ Motion II</h2>
+                            <h3 class="mission-card__subtitle">Enchantment Resonance</h3>
+                            <p class="mission-card__briefing">A rune controls the strength of an enchantment</p>
+                            <p class="mission-card__objective">How to complete: choose Tune Enchantment. Press the thumb, drag it along the track, and release it. You can adjust it repeatedly without Reset</p>
+                            <div class="mission-card__visual" id="enchantment-resonance-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="enchantment-resonance" data-action="activate">Tune Enchantment</button> <button class="btn btn--secondary" type="button" data-task="enchantment-resonance" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="enchantment-resonance-result" aria-live="polite"></div>
+                            <div class="event-log" id="enchantment-resonance-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="endless-archive">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">scroll / page metrics</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">📜 Motion III</h2>
+                            <h3 class="mission-card__subtitle">Endless Archive</h3>
+                            <p class="mission-card__briefing">New chronicles emerge near the end of the page</p>
+                            <p class="mission-card__objective">How to complete: choose Open Endless Archive and scroll within 100 px of the page bottom. One batch of five chronicles loads per approach; the safe demonstration limit is 40 records</p>
+                            <div class="mission-card__visual" id="endless-archive-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="endless-archive" data-action="activate">Open Endless Archive</button> <button class="btn btn--secondary" type="button" data-task="endless-archive" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="endless-archive-result" aria-live="polite"></div>
+                            <div class="event-log" id="endless-archive-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+                <section class="tab-panel" id="craft" role="tabpanel" aria-labelledby="tab-craft" hidden>
+                    <div class="task-grid">
+                        <article class="mission-card" data-mission-id="fate-board">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">native drag and drop</span> <span class="mission-card__number">I</span></div>
+                            <h2 class="mission-card__title">🗂️ Craft I</h2>
+                            <h3 class="mission-card__subtitle">Board of Fate</h3>
+                            <p class="mission-card__briefing">Destiny cards travel between three chambers</p>
+                            <p class="mission-card__objective">How to complete: choose Open Fate Board and drag any card into another column. Native dragstart, dragover and drop remain available for further moves</p>
+                            <div class="mission-card__visual" id="fate-board-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="fate-board" data-action="activate">Open Fate Board</button> <button class="btn btn--secondary" type="button" data-task="fate-board" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="fate-board-result" aria-live="polite"></div>
+                            <div class="event-log" id="fate-board-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="illusion-selection">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">mouse geometry / intersection</span> <span class="mission-card__number">II</span></div>
+                            <h2 class="mission-card__title">🖥️ Craft II</h2>
+                            <h3 class="mission-card__subtitle">Illusion Selection</h3>
+                            <p class="mission-card__briefing">Hidden scrolls can be selected as on a desktop</p>
+                            <p class="mission-card__objective">How to complete: choose Open Illusion Desktop, press the dotted empty background and drag across scroll icons. This is selection, not Drag and Drop: the icons do not move. The rectangle disappears on release, while selected icons stay highlighted</p>
+                            <div class="mission-card__visual" id="illusion-selection-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="illusion-selection" data-action="activate">Open Illusion Desktop</button> <button class="btn btn--secondary" type="button" data-task="illusion-selection" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="illusion-selection-result" aria-live="polite"></div>
+                            <div class="event-log" id="illusion-selection-log" aria-live="polite"></div>
+                        </article>
+                        <article class="mission-card" data-mission-id="timeline-scrollspy">
+                            <div class="mission-card__header"><span class="mission-card__badge mission-card__badge--pending">scrollIntoView / viewport</span> <span class="mission-card__number">III</span></div>
+                            <h2 class="mission-card__title">🧭 Craft III</h2>
+                            <h3 class="mission-card__subtitle">Timeline ScrollSpy</h3>
+                            <p class="mission-card__briefing">A fixed Fate menu observes three long sections</p>
+                            <p class="mission-card__objective">How to complete: choose Open Timeline Map. Use the fixed menu for smooth navigation or scroll manually. The visible section is highlighted; reach Hidden Future to complete</p>
+                            <div class="mission-card__visual" id="timeline-scrollspy-visual"></div>
+                            <div class="mission-card__actions"><button class="btn btn--primary" type="button" data-task="timeline-scrollspy" data-action="activate">Open Timeline Map</button> <button class="btn btn--secondary" type="button" data-task="timeline-scrollspy" data-action="reset">Reset</button></div>
+                            <div class="result-panel" id="timeline-scrollspy-result" aria-live="polite"></div>
+                            <div class="event-log" id="timeline-scrollspy-log" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+            <footer class="app-footer">
+                <p>Browser Events · Loki's Ancient Archive · Eighteen technical trials</p>
+            </footer>
+            <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+        </div>
+        <script src="js/constants/app.constants.js"></script>
+        <script src="js/constants/ui.constants.js"></script>
+        <script src="js/constants/animation.constants.js"></script>
+        <script src="js/core/dom.js"></script>
+        <script src="js/core/ui.js"></script>
+        <script src="js/tasks/forbidden-relic.js"></script>
+        <script src="js/tasks/bifrost-portal.js"></script>
+        <script src="js/tasks/mischievous-artifact.js"></script>
+        <script src="js/tasks/council-of-realms.js"></script>
+        <script src="js/tasks/archive-of-illusions.js"></script>
+        <script src="js/tasks/hall-of-echoes.js"></script>
+        <script src="js/tasks/sacred-relic.js"></script>
+        <script src="js/tasks/secret-rune-sequence.js"></script>
+        <script src="js/tasks/temporal-echo.js"></script>
+        <script src="js/tasks/emerald-familiar.js"></script>
+        <script src="js/tasks/pure-rune-script.js"></script>
+        <script src="js/tasks/timeline-ascent.js"></script>
+        <script src="js/tasks/trickster-path.js"></script>
+        <script src="js/tasks/enchantment-resonance.js"></script>
+        <script src="js/tasks/endless-archive.js"></script>
+        <script src="js/tasks/fate-board.js"></script>
+        <script src="js/tasks/illusion-selection.js"></script>
+        <script src="js/tasks/timeline-scrollspy.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
