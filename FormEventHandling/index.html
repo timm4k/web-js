@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formula Forms</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+  </head>
+  <body>
+    <div class="speed-line speed-line--one" aria-hidden="true"></div>
+    <div class="speed-line speed-line--two" aria-hidden="true"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Formula Forms home"
+          ><span class="brand__mark" aria-hidden="true">F1</span
+          ><span
+            ><strong>FORMULA FORMS</strong><small>PADDOCK CONTROL</small></span
+          ></a
+        >
+        <div class="progress-wrap">
+          <span class="progress-label">0 / 9 protocols</span>
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Completed protocols"
+            aria-valuemin="0"
+            aria-valuemax="9"
+            aria-valuenow="0"
+          >
+            <div class="progress__fill"></div>
+          </div>
+        </div>
+      </header>
+      <main id="top" class="main-content">
+        <section class="hero">
+          <div class="hero__eyebrow">FORM EVENT TELEMETRY</div>
+          <h1>Every input decides the race</h1>
+          <p>
+            Nine form protocols test focus, live input, validation, clipboard
+            security and dependent controls
+          </p>
+        </section>
+        <nav class="tabs" role="tablist" aria-label="Protocol levels">
+          <button
+            class="tab active"
+            id="tab-rookie"
+            type="button"
+            role="tab"
+            tabindex="0"
+            aria-selected="true"
+            aria-controls="rookie"
+            data-tab="rookie"
+          >
+            01 · Rookie Garage
+          </button>
+          <button
+            class="tab"
+            id="tab-paddock"
+            type="button"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="paddock"
+            data-tab="paddock"
+          >
+            02 · Pit Wall
+          </button>
+          <button
+            class="tab"
+            id="tab-championship"
+            type="button"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="championship"
+            data-tab="championship"
+          >
+            03 · Championship
+          </button>
+        </nav>
+
+        <section
+          class="tab-panel active"
+          id="rookie"
+          role="tabpanel"
+          aria-labelledby="tab-rookie"
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="team-contact">
+              <header class="task-card__header">
+                <span class="event-badge">focus / blur</span
+                ><span class="task-number">01</span>
+              </header>
+              <h2>🎧 Paddock I</h2>
+              <h3>Team Contact Channel</h3>
+              <p class="briefing">
+                Race Control needs a verified working email
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Open Channel, focus the
+                email field, then leave it empty once to reveal the validation
+                state
+              </p>
+              <form class="task-form" id="team-contact-form" novalidate>
+                <label for="team-contact-email">Working email</label
+                ><input
+                  class="field-control"
+                  id="team-contact-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  aria-describedby="team-contact-hint"
+                  aria-invalid="false"
+                  placeholder="driver@team.com"
+                />
+                <div class="field-hint" id="team-contact-hint" hidden>
+                  Enter your working email for Race Control
+                </div>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Open Channel</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="team-contact-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="team-contact-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="driver-display">
+              <header class="task-card__header">
+                <span class="event-badge">input / value</span
+                ><span class="task-number">02</span>
+              </header>
+              <h2>🏎️ Paddock II</h2>
+              <h3>Driver Display</h3>
+              <p class="briefing">
+                The timing board mirrors the driver name instantly
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Power Display and type
+                a driver name; every input event updates the timing board
+                immediately
+              </p>
+              <form class="task-form" id="driver-display-form">
+                <label for="driver-name">Driver name</label
+                ><input
+                  class="field-control"
+                  id="driver-name"
+                  name="driverName"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="Enter driver name"
+                />
+                <div class="timing-board">
+                  <small>LIVE TIMING</small
+                  ><span id="driver-name-preview">Awaiting driver</span>
+                </div>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Power Display</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="driver-display-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="driver-display-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="garage-signals">
+              <header class="task-card__header">
+                <span class="event-badge">change / form.elements</span
+                ><span class="task-number">03</span>
+              </header>
+              <h2>🚦 Paddock III</h2>
+              <h3>Garage Signal Lights</h3>
+              <p class="briefing">
+                Three radio channels control the page atmosphere
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Enable Signals and
+                select Red, Green or Blue; the chosen radio value changes the
+                page background
+              </p>
+              <form class="task-form signal-options" id="garage-signals-form">
+                <label class="radio-tile radio-tile--red"
+                  ><input
+                    type="radio"
+                    name="signalColor"
+                    value="#3a0f16"
+                  /><span>Red</span></label
+                ><label class="radio-tile radio-tile--green"
+                  ><input
+                    type="radio"
+                    name="signalColor"
+                    value="#0c3b2a"
+                  /><span>Green</span></label
+                ><label class="radio-tile radio-tile--blue"
+                  ><input
+                    type="radio"
+                    name="signalColor"
+                    value="#102a52"
+                  /><span>Blue</span></label
+                >
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Enable Signals</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="garage-signals-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="garage-signals-log"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="paddock"
+          role="tabpanel"
+          aria-labelledby="tab-paddock"
+          hidden
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="pit-wall-security">
+              <header class="task-card__header">
+                <span class="event-badge">copy / cut / paste</span
+                ><span class="task-number">04</span>
+              </header>
+              <h2>🔒 Pit Wall I</h2>
+              <h3>Credential Protocol</h3>
+              <p class="briefing">
+                Sensitive credentials must never enter the clipboard
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Arm Security, try to
+                copy or cut the first password, then try to paste into the
+                confirmation field
+              </p>
+              <form class="task-form" id="pit-wall-security-form">
+                <label for="pit-password">Pit Wall password</label
+                ><input
+                  class="field-control"
+                  id="pit-password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                /><label for="pit-password-repeat"
+                  >Repeat password manually</label
+                ><input
+                  class="field-control"
+                  id="pit-password-repeat"
+                  name="passwordRepeat"
+                  type="password"
+                  autocomplete="new-password"
+                />
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Arm Security</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="pit-wall-security-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="pit-wall-security-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="race-regulations">
+              <header class="task-card__header">
+                <span class="event-badge">change / checked / disabled</span
+                ><span class="task-number">05</span>
+              </header>
+              <h2>📑 Pit Wall II</h2>
+              <h3>Race Regulations</h3>
+              <p class="briefing">
+                Submission remains locked until regulations are accepted
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Load Regulations,
+                toggle the agreement checkbox and observe the Submit Entry
+                button lock and unlock repeatedly
+              </p>
+              <form class="task-form" id="race-regulations-form">
+                <label class="check-row" for="regulations-check"
+                  ><input
+                    id="regulations-check"
+                    name="accepted"
+                    type="checkbox"
+                  /><span>I have reviewed the Formula regulations</span></label
+                ><button
+                  class="btn btn--submit"
+                  id="regulations-submit"
+                  type="button"
+                  disabled
+                >
+                  Submit Entry
+                </button>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Load Regulations</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="race-regulations-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="race-regulations-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="car-performance">
+              <header class="task-card__header">
+                <span class="event-badge">change / select.value</span
+                ><span class="task-number">06</span>
+              </header>
+              <h2>🔧 Pit Wall III</h2>
+              <h3>Car Performance Terminal</h3>
+              <p class="briefing">
+                Race Control loads performance data for the selected car
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Load Cars and select a
+                race car; the readonly maximum-speed field updates from the
+                JavaScript data object
+              </p>
+              <form class="task-form form-row" id="car-performance-form">
+                <label for="car-select"
+                  >Race car<select
+                    class="field-control"
+                    id="car-select"
+                    name="car"
+                  >
+                    <option value="">Choose race car</option>
+                    <option value="redline">Redline R1</option>
+                    <option value="velocity">Velocity V2</option>
+                  </select></label
+                ><label for="car-speed"
+                  >Maximum speed<input
+                    class="field-control"
+                    id="car-speed"
+                    name="speed"
+                    type="text"
+                    readonly
+                    placeholder="0 km/h"
+                /></label>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Load Cars</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="car-performance-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="car-performance-log"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="championship"
+          role="tabpanel"
+          aria-labelledby="tab-championship"
+          hidden
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="garage-otp">
+              <header class="task-card__header">
+                <span class="event-badge">input / keydown / focus</span
+                ><span class="task-number">07</span>
+              </header>
+              <h2>🎟️ Championship I</h2>
+              <h3>Garage Access Code</h3>
+              <p class="briefing">
+                A four-digit code opens the restricted garage
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Request Code and enter
+                four digits; focus advances automatically, while Backspace on an
+                empty field returns to the previous field
+              </p>
+              <form class="task-form" id="garage-otp-form">
+                <div class="otp-row" id="garage-otp-row">
+                  <input
+                    class="otp-input"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Code digit 1"
+                  /><input
+                    class="otp-input"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Code digit 2"
+                  /><input
+                    class="otp-input"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Code digit 3"
+                  /><input
+                    class="otp-input"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Code digit 4"
+                  />
+                </div>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Request Code</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="garage-otp-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="garage-otp-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="driver-password">
+              <header class="task-card__header">
+                <span class="event-badge">input / RegExp / disabled</span
+                ><span class="task-number">08</span>
+              </header>
+              <h2>⚙️ Championship II</h2>
+              <h3>Driver Password Check</h3>
+              <p class="briefing">
+                Live telemetry verifies every security requirement
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Start Check and enter a
+                password longer than eight characters with a number and an
+                uppercase letter
+              </p>
+              <form class="task-form" id="driver-password-form">
+                <label for="driver-password-input">Driver password</label
+                ><input
+                  class="field-control"
+                  id="driver-password-input"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                />
+                <ul class="rule-list">
+                  <li data-rule="length">
+                    <span></span>More than 8 characters
+                  </li>
+                  <li data-rule="number"><span></span>Contains a number</li>
+                  <li data-rule="uppercase">
+                    <span></span>Contains an uppercase letter
+                  </li>
+                </ul>
+                <button
+                  class="btn btn--submit"
+                  id="driver-register"
+                  type="button"
+                  disabled
+                >
+                  Register Driver
+                </button>
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Start Check</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="driver-password-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="driver-password-log"
+                aria-live="polite"
+              ></div>
+            </article>
+            <article class="task-card" data-task-id="grand-prix-route">
+              <header class="task-card__header">
+                <span class="event-badge">change / new Option()</span
+                ><span class="task-number">09</span>
+              </header>
+              <h2>🗺️ Championship III</h2>
+              <h3>Grand Prix Route</h3>
+              <p class="briefing">
+                Race Control links every country to its available cities
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> choose Load Calendar, select
+                Italy or USA and inspect how the disabled city select is rebuilt
+                with matching options
+              </p>
+              <form class="task-form form-row" id="grand-prix-route-form">
+                <label for="country-select"
+                  >Country<select
+                    class="field-control"
+                    id="country-select"
+                    name="country"
+                  >
+                    <option value="">Choose country</option>
+                    <option value="italy">Italy</option>
+                    <option value="usa">USA</option>
+                  </select></label
+                ><label for="city-select"
+                  >City<select
+                    class="field-control"
+                    id="city-select"
+                    name="city"
+                    disabled
+                  >
+                    <option value="">Choose country first</option>
+                  </select></label
+                >
+              </form>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  type="button"
+                  data-action="activate"
+                >
+                  Load Calendar</button
+                ><button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-action="reset"
+                >
+                  Reset
+                </button>
+              </div>
+              <div
+                class="result"
+                id="grand-prix-route-result"
+                aria-live="polite"
+              ></div>
+              <div
+                class="event-log"
+                id="grand-prix-route-log"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span>FORMULA FORMS</span
+        ><span>Focus · Input · Change · Clipboard · Validation</span>
+      </footer>
+    </div>
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/constants/app.constants.js"></script>
+    <script src="js/constants/ui.constants.js"></script>
+    <script src="js/core/dom.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/tasks/team-contact.js"></script>
+    <script src="js/tasks/driver-display.js"></script>
+    <script src="js/tasks/garage-signals.js"></script>
+    <script src="js/tasks/pit-wall-security.js"></script>
+    <script src="js/tasks/race-regulations.js"></script>
+    <script src="js/tasks/car-performance.js"></script>
+    <script src="js/tasks/garage-otp.js"></script>
+    <script src="js/tasks/driver-password.js"></script>
+    <script src="js/tasks/grand-prix-route.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
