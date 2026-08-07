@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="interactive 1980-1990s rock archive demonstrating jQuery AJAX, Fetch, Storage, History, Location, Cookies and browser APIs"
+    />
+    <title>Midnight Archive</title>
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/music-theme.css" />
+    <link rel="stylesheet" href="css/card-shapes.css" />
+  </head>
+  <body>
+    <div class="stage-light stage-light--red" aria-hidden="true"></div>
+    <div class="stage-light stage-light--blue" aria-hidden="true"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Midnight Archive home">
+          <span class="brand__mark" aria-hidden="true">MA</span>
+          <span
+            ><strong>MIDNIGHT ARCHIVE</strong
+            ><small>WEB DATA · APIs</small></span
+          >
+        </a>
+        <div class="progress-wrap">
+          <span class="progress-label">0 / 10 scenarios</span>
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Completed scenarios"
+            aria-valuemin="0"
+            aria-valuemax="10"
+            aria-valuenow="0"
+          >
+            <div class="progress__fill"></div>
+          </div>
+        </div>
+      </header>
+
+      <main id="top" class="main-content">
+        <section class="hero">
+          <div class="hero__eyebrow">BACKSTAGE DATA TERMINAL · 1980-1990s</div>
+          <h1>Every signal enters the archive</h1>
+          <p>
+            Ten scenarios connect the browser to remote data, persistent memory
+            and shareable routes
+          </p>
+        </section>
+
+        <nav class="tabs" role="tablist" aria-label="Archive levels">
+          <button
+            class="tab active"
+            id="tab-headliner"
+            type="button"
+            role="tab"
+            tabindex="0"
+            aria-selected="true"
+            aria-controls="headliner"
+            data-tab="headliner"
+          >
+            00 · Headliner Search
+          </button>
+          <button
+            class="tab"
+            id="tab-scout"
+            type="button"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="scout"
+            data-tab="scout"
+          >
+            01 · Road Scout
+          </button>
+          <button
+            class="tab"
+            id="tab-engineer"
+            type="button"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="engineer"
+            data-tab="engineer"
+          >
+            02 · Sound Engineer
+          </button>
+          <button
+            class="tab"
+            id="tab-simulator"
+            type="button"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="simulator"
+            data-tab="simulator"
+          >
+            03 · Tour System
+          </button>
+        </nav>
+
+        <section
+          class="tab-panel active"
+          id="headliner"
+          role="tabpanel"
+          aria-labelledby="tab-headliner"
+        >
+          <article
+            class="task-card task-card--feature"
+            data-task-id="jquery-ajax-search"
+          >
+            <header class="task-card__header">
+              <span class="event-badge">jQuery AJAX / JSON / pagination</span>
+              <span class="task-number">00</span>
+            </header>
+            <h2>🎸 Headliner Archive</h2>
+            <h3>Rock Catalogue Search</h3>
+            <p class="briefing">
+              Explore the official catalogues of nine featured 1980-1990s rock
+              bands
+            </p>
+            <p class="objective">
+              <strong>How to complete:</strong> choose a featured band, select
+              Track, Album or Artist and use Search Catalogue. Ten results
+              appear per page; numbered controls request another page through
+              AJAX, while Details opens a complete record card
+            </p>
+            <form
+              class="task-form search-form"
+              id="jquery-ajax-search-form"
+              novalidate
+            >
+              <label for="music-query"
+                >Featured band
+                <select
+                  class="field-control"
+                  id="music-query"
+                  name="query"
+                  required
+                >
+                  <option value="">Choose a band</option>
+                  <option value="Cinderella">Cinderella</option>
+                  <option value="Guns N' Roses">Guns N' Roses</option>
+                  <option value="Metallica">Metallica</option>
+                  <option value="Quiet Riot">Quiet Riot</option>
+                  <option value="Bon Jovi">Bon Jovi</option>
+                  <option value="Def Leppard">Def Leppard</option>
+                  <option value="Ratt">Ratt</option>
+                  <option value="Winger">Winger</option>
+                  <option value="AC/DC">AC/DC</option>
+                </select>
+              </label>
+              <label for="music-type"
+                >Catalogue type
+                <select class="field-control" id="music-type" name="type">
+                  <option value="track">Track</option>
+                  <option value="album">Album</option>
+                  <option value="artist">Artist</option>
+                </select>
+              </label>
+              <button class="btn btn--primary" type="submit">
+                Search Catalogue
+              </button>
+            </form>
+            <div
+              class="result"
+              id="jquery-ajax-search-result"
+              aria-live="polite"
+            >
+              Choose a featured band to begin
+            </div>
+            <div
+              class="catalogue-grid"
+              id="music-results"
+              aria-live="polite"
+            ></div>
+            <nav
+              class="pagination"
+              id="music-pagination"
+              aria-label="Catalogue result pages"
+            ></nav>
+            <section
+              class="details-panel"
+              id="music-details"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Catalogue record details"
+              aria-live="polite"
+              hidden
+            ></section>
+          </article>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="scout"
+          role="tabpanel"
+          aria-labelledby="tab-scout"
+          hidden
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="local-storage">
+              <header class="task-card__header">
+                <span class="event-badge">localStorage</span
+                ><span class="task-number">01</span>
+              </header>
+              <h2>🎤 Scout I</h2>
+              <h3>Form Your Band</h3>
+              <p class="briefing">
+                Create an original rock band and register it as tonight’s
+                headliner
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> enter your band name and
+                select Register Band, then reload the page. The headliner
+                remains saved and the form stays hidden until Remove Band clears
+                localStorage
+              </p>
+              <div class="task-form">
+                <h4 class="display-title" id="band-greeting">
+                  No Headliner Registered
+                </h4>
+                <div id="band-entry">
+                  <label for="band-name">Original band name</label
+                  ><input
+                    class="field-control"
+                    id="band-name"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Midnight Voltage"
+                  />
+                </div>
+                <button class="btn btn--submit" id="band-save" type="button">
+                  Register Band
+                </button>
+                <button
+                  class="btn btn--ghost"
+                  id="band-remove"
+                  type="button"
+                  hidden
+                >
+                  Remove Band
+                </button>
+              </div>
+              <div
+                class="result"
+                id="local-storage-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="location-object">
+              <header class="task-card__header">
+                <span class="event-badge">window.location</span
+                ><span class="task-number">02</span>
+              </header>
+              <h2>📍 Scout II</h2>
+              <h3>Current Page Address</h3>
+              <p class="briefing">
+                The tour terminal reads the exact browser address of this
+                running archive
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> select Read Address. Full URL
+                is this page’s complete address, Host is the local or remote
+                server, and Page path identifies the open file. Add
+                <code>?id=1986</code> to the end of the address to reveal the
+                optional Tour ID
+              </p>
+              <div class="task-form">
+                <ul class="data-list" id="location-list">
+                  <li>Current address has not been read</li>
+                </ul>
+              </div>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  id="location-inspect"
+                  type="button"
+                >
+                  Read Address
+                </button>
+              </div>
+              <div
+                class="result"
+                id="location-object-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="basic-fetch">
+              <header class="task-card__header">
+                <span class="event-badge">fetch / response.json()</span
+                ><span class="task-number">03</span>
+              </header>
+              <h2>🐈 Scout III</h2>
+              <h3>Roadie Cat Dispatch</h3>
+              <p class="briefing">
+                The tour bus radio receives a new fact about its backstage cat
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> select Call Tour Cat. Fetch
+                requests JSON from catfact.ninja and displays the received fact
+                without reloading the archive
+              </p>
+              <div class="task-form">
+                <blockquote class="fact-display" id="basic-fetch-text">
+                  No transmission received
+                </blockquote>
+              </div>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  id="basic-fetch-load"
+                  type="button"
+                >
+                  Call Tour Cat
+                </button>
+              </div>
+              <div
+                class="result"
+                id="basic-fetch-result"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="engineer"
+          role="tabpanel"
+          aria-labelledby="tab-engineer"
+          hidden
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="cookie-management">
+              <header class="task-card__header">
+                <span class="event-badge">document.cookie / max-age</span
+                ><span class="task-number">04</span>
+              </header>
+              <h2>🎫 Engineer I</h2>
+              <h3>Venue Access Consent</h3>
+              <p class="briefing">
+                A one-hour browser cookie remembers that venue access was
+                accepted
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> when no consent cookie exists,
+                a fixed venue notice appears below. Select Accept Access and
+                reload the page; the notice stays hidden until the one-hour
+                max-age expires. Reset Consent removes it for another test
+              </p>
+              <div class="task-form">
+                <p class="status-display" id="cookie-status">
+                  Checking venue access
+                </p>
+              </div>
+              <div class="actions">
+                <button
+                  class="btn btn--ghost"
+                  id="cookie-recheck"
+                  type="button"
+                >
+                  Recheck Access</button
+                ><button class="btn btn--ghost" id="cookie-clear" type="button">
+                  Reset Consent
+                </button>
+              </div>
+              <div
+                class="result"
+                id="cookie-management-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="github-fetch">
+              <header class="task-card__header">
+                <span class="event-badge">fetch / response.ok / errors</span
+                ><span class="task-number">05</span>
+              </header>
+              <h2>💻 Engineer II</h2>
+              <h3>Tour Web Developer</h3>
+              <p class="briefing">
+                Find a GitHub developer for the band’s digital tour crew
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> enter a GitHub username and
+                select Find Developer. A successful API response displays the
+                developer’s avatar, name and profile; status 404 displays a
+                visible not-found state
+              </p>
+              <form
+                class="task-form inline-form"
+                id="github-fetch-form"
+                novalidate
+              >
+                <label for="github-username"
+                  >Developer’s GitHub username<input
+                    class="field-control"
+                    id="github-username"
+                    type="search"
+                    autocomplete="off"
+                    placeholder="torvalds"
+                    required /></label
+                ><button class="btn btn--primary" type="submit">
+                  Find Developer
+                </button>
+              </form>
+              <div class="profile-card" id="github-profile" hidden></div>
+              <div
+                class="result"
+                id="github-fetch-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="url-search-params">
+              <header class="task-card__header">
+                <span class="event-badge">URLSearchParams / pushState</span
+                ><span class="task-number">06</span>
+              </header>
+              <h2>🎚️ Engineer III</h2>
+              <h3>Setlist Status Link</h3>
+              <p class="briefing">
+                A shareable URL remembers which part of the band’s setlist is
+                selected
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> select All Tracks, On Tour or
+                Retired. history.pushState writes the selected status into
+                <code>?filter=</code> without reloading, while URLSearchParams
+                restores the matching control after the page opens
+              </p>
+              <div class="task-form">
+                <div
+                  class="filter-group"
+                  id="url-search-params-controls"
+                  aria-label="Setlist filters"
+                >
+                  <button class="filter-button" type="button" data-filter="all">
+                    All Tracks</button
+                  ><button
+                    class="filter-button"
+                    type="button"
+                    data-filter="active"
+                  >
+                    On Tour</button
+                  ><button
+                    class="filter-button"
+                    type="button"
+                    data-filter="completed"
+                  >
+                    Retired
+                  </button>
+                </div>
+                <p class="status-display" id="url-search-params-value">
+                  Selected setlist: All Tracks
+                </p>
+              </div>
+              <div
+                class="result"
+                id="url-search-params-result"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="tab-panel"
+          id="simulator"
+          role="tabpanel"
+          aria-labelledby="tab-simulator"
+          hidden
+        >
+          <div class="task-grid">
+            <article class="task-card" data-task-id="history-api">
+              <header class="task-card__header">
+                <span class="event-badge">History API / popstate</span
+                ><span class="task-number">07</span>
+              </header>
+              <h2>🗺️ System I</h2>
+              <h3>Band Microsite Router</h3>
+              <p class="briefing">
+                Three pages of an 80s band website open without a full page
+                reload
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> open Tour Home, Band Biography
+                and Booking Office. Each link cancels normal navigation and
+                changes the URL through history.pushState; the browser Back and
+                Forward buttons restore content through popstate
+              </p>
+              <div class="task-form spa-frame">
+                <nav id="spa-navigation" aria-label="Band website pages">
+                  <a href="/home" data-route="home">Tour Home</a
+                  ><a href="/about" data-route="about">Band Biography</a
+                  ><a href="/contacts" data-route="contacts">Booking Office</a>
+                </nav>
+                <section id="spa-content" tabindex="-1"></section>
+              </div>
+              <div
+                class="result"
+                id="history-api-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="fetch-cache">
+              <header class="task-card__header">
+                <span class="event-badge"
+                  >fetch / localStorage / Date.now()</span
+                ><span class="task-number">08</span>
+              </header>
+              <h2>💵 System II</h2>
+              <h3>International Tour Budget</h3>
+              <p class="briefing">
+                The tour accountant caches current exchange rates for overseas
+                concert expenses
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> select Load Tour Rates. Fresh
+                rate data is read from localStorage; missing or expired data
+                triggers a fetch request to the NBU API, then JSON.stringify
+                stores the response with a Date.now timestamp for one hour
+              </p>
+              <div class="task-form">
+                <ul class="rate-list" id="currency-list">
+                  <li>Exchange board is offline</li>
+                </ul>
+                <small class="cache-note" id="currency-source"
+                  >No source selected</small
+                >
+              </div>
+              <div class="actions">
+                <button
+                  class="btn btn--primary"
+                  id="currency-load"
+                  type="button"
+                >
+                  Load Tour Rates</button
+                ><button
+                  class="btn btn--ghost"
+                  id="currency-clear"
+                  type="button"
+                >
+                  Clear Rate Cache
+                </button>
+              </div>
+              <div
+                class="result"
+                id="fetch-cache-result"
+                aria-live="polite"
+              ></div>
+            </article>
+
+            <article class="task-card" data-task-id="clipboard-api">
+              <header class="task-card__header">
+                <span class="event-badge">navigator.clipboard / onLine</span
+                ><span class="task-number">09</span>
+              </header>
+              <h2>📼 System III</h2>
+              <h3>Setlist Note Copier</h3>
+              <p class="briefing">
+                A production note for tonight’s concert moves into the system
+                clipboard
+              </p>
+              <p class="objective">
+                <strong>How to complete:</strong> edit the concert note and
+                select Copy Setlist Note. navigator.clipboard.writeText copies
+                it and changes the button for two seconds; offline status
+                disables the control
+              </p>
+              <div class="task-form">
+                <label for="clipboard-text">Tonight’s production note</label
+                ><textarea class="field-control text-area" id="clipboard-text">
+House lights down. Amplifiers ready. Headliner enters after the midnight intro</textarea
+                ><button
+                  class="btn btn--submit"
+                  id="clipboard-copy"
+                  type="button"
+                >
+                  Copy Setlist Note
+                </button>
+              </div>
+              <div
+                class="result"
+                id="clipboard-api-result"
+                aria-live="polite"
+              ></div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>MIDNIGHT ARCHIVE</span
+        ><span>Storage · Location · Fetch · Cookies · History · Clipboard</span>
+      </footer>
+    </div>
+
+    <aside class="cookie-banner" id="cookie-banner" aria-live="polite" hidden>
+      <span>Allow a one-hour cookie to remember venue access</span>
+      <button class="btn btn--primary" id="cookie-accept" type="button">
+        Accept Access
+      </button>
+    </aside>
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/constants/app.constants.js"></script>
+    <script src="js/constants/ui.constants.js"></script>
+    <script src="js/core/dom.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/tasks/jquery-ajax-search.js"></script>
+    <script src="js/tasks/local-storage.js"></script>
+    <script src="js/tasks/location-object.js"></script>
+    <script src="js/tasks/basic-fetch.js"></script>
+    <script src="js/tasks/cookie-management.js"></script>
+    <script src="js/tasks/github-fetch.js"></script>
+    <script src="js/tasks/url-search-params.js"></script>
+    <script src="js/tasks/history-api.js"></script>
+    <script src="js/tasks/fetch-cache.js"></script>
+    <script src="js/tasks/clipboard-api.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

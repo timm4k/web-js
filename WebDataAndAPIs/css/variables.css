@@ -1,0 +1,23 @@
+:root {
+  --black: #07070a;
+  --obsidian: #0d0d13;
+  --panel: #15151d;
+  --panel-soft: #1c1b27;
+  --white: #f5f2f7;
+  --silver: #b8b4c1;
+  --muted: #7f7a89;
+  --lavender: #a78bca;
+  --lavender-bright: #d6b8ff;
+  --red: #cb2845;
+  --red-dark: #6f1228;
+  --blue: #356fc7;
+  --blue-dark: #142c55;
+  --success: #a78bca;
+  --error: #ff596f;
+  --gold: #d6ae62;
+  --line: rgba(214, 184, 255, 0.14);
+  --radius: 15px;
+  --shadow: 0 22px 65px rgba(0, 0, 0, 0.46);
+  --font: Inter, "Segoe UI", Arial, sans-serif;
+  --display: "Arial Narrow", Impact, Inter, sans-serif;
+}
